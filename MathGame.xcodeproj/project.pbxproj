@@ -54,14 +54,22 @@
 		1FB478C921D5B7BD005604C5 /* MathGame */ = {
 			isa = PBXGroup;
 			children = (
-				1FB478CA21D5B7BD005604C5 /* AppDelegate.swift */,
+				1FB478DD21D5C060005604C5 /* Supporting Files */,
 				1FB478CC21D5B7BD005604C5 /* ViewController.swift */,
 				1FB478CE21D5B7BD005604C5 /* Main.storyboard */,
-				1FB478D121D5B7BE005604C5 /* Assets.xcassets */,
-				1FB478D321D5B7BE005604C5 /* LaunchScreen.storyboard */,
 				1FB478D621D5B7BE005604C5 /* Info.plist */,
 			);
 			path = MathGame;
+			sourceTree = "<group>";
+		};
+		1FB478DD21D5C060005604C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1FB478CA21D5B7BD005604C5 /* AppDelegate.swift */,
+				1FB478D121D5B7BE005604C5 /* Assets.xcassets */,
+				1FB478D321D5B7BE005604C5 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
