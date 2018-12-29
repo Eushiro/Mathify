@@ -9,5 +9,6 @@
 import Foundation
 
 class gameManager{
-    static var game = MathGame()
+    static let game = MathGame()
+    static var scores = [0,0,0,0,0]
 }

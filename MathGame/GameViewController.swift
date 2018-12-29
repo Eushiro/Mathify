@@ -37,6 +37,11 @@ class GameViewController: UIViewController {
         userInput = ""
     }
     
+    @IBAction func backButtonClick(_ sender: UIButton) {
+        if(countCorrect>gameManager.scores[MathGame.getGameType()]){
+            gameManager.scores[MathGame.getGameType()] = countCorrect
+        }
+    }
     
     @IBOutlet var inputButtons: [UIButton]!
     

@@ -48,7 +48,7 @@ class MathGame{
         case 2:
             return "\(MathGame.firstNum) x \(MathGame.secondNum) = ?"
         case 1:
-            return "\(MathGame.firstNum) ÷ \(MathGame.secondNum) = ?"
+            return "\(MathGame.firstNum * MathGame.secondNum) ÷ \(MathGame.secondNum) = ?"
         default:
             return "Error Occured"
         }
