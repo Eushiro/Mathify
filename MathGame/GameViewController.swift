@@ -13,6 +13,22 @@ class GameViewController: UIViewController {
     @IBOutlet weak var problemLabel: UILabel!
     @IBOutlet weak var userInputLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
+    var timer = Timer()
+    
+    @IBOutlet weak var backButton: UIButton!
+    
+    var timeOfGame = gameManager.seconds{
+        didSet{
+            timerLabel.text = "Time: \(timeOfGame)"
+            if timeOfGame == 0{
+                timer = Timer.scheduledTimer(withTimeInterval: 0, repeats: false, block: {(timer) in self.timeOfGame = 0})
+                problemLabel.text = "Time's Up! \n Return to Menu."
+                
+            }
+        }
+    }
+    
     var countCorrect = 0 {
         didSet{
             scoreLabel.text = "Score: \(countCorrect)"
@@ -35,12 +51,13 @@ class GameViewController: UIViewController {
         // Do any additional setup after loading the view.
         problemString = gameManager.game.generateProblem()
         userInput = ""
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in self.timeOfGame -= 1})
     }
-    
-    @IBAction func backButtonClick(_ sender: UIButton) {
+ 
+    @IBAction func backButtonClick(_ sender: UIButton?) {
         if(countCorrect>gameManager.scores[MathGame.getGameType()]){
             gameManager.scores[MathGame.getGameType()] = countCorrect
-        }
+            }
     }
     
     @IBOutlet var inputButtons: [UIButton]!

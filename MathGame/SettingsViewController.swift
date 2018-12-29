@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewRows
     }
-    
+     @IBOutlet weak var timeSliderObject: UISlider!
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         switch indexPath.row {
@@ -36,13 +36,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.textLabel?.text = "0"
         }
         cell.backgroundColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1)
+      //  cell.textLabel.font = [UIFont fontWithName: @"Arial" size: 18.0]
         return cell
     }
     
-
+    @IBOutlet weak var timeDisplayLabel: UILabel!
+    @IBAction func timeSlider(_ sender: UISlider) {
+        gameManager.seconds = Int(sender.value)
+        timeDisplayLabel.text = String(gameManager.seconds)
+    }
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        timeSliderObject.value = Float(gameManager.seconds)
+        timeDisplayLabel.text = String(gameManager.seconds)
+        
         // Do any additional setup after loading the view.
     }
     

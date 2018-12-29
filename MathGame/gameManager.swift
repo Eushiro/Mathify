@@ -11,4 +11,5 @@ import Foundation
 class gameManager{
     static let game = MathGame()
     static var scores = [0,0,0,0,0]
+    static var seconds = 30
 }
