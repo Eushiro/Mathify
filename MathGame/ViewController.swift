@@ -15,5 +15,15 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    
+    @IBOutlet var menuButtons: [UIButton]!
+    
+    
+    @IBAction func menuButtonClick(_ sender: UIButton) {
+        let buttonNumber = menuButtons.firstIndex(of: sender)!
+        MathGame.setGameType(userChoice: buttonNumber)
+        //print("The game type is \(MathGame.getGameType())")
+    }
+    
 }
 
