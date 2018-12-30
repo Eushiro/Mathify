@@ -14,52 +14,60 @@ class MathGame{
     static var input = 0
     static var answer = 0
     static var firstNum = 0
+    //Use random limits to control difficulty of randomly generated problems
+    static var randomLimits = ["firstNumLowerBound":10, "firstNumUpperBound": 20, "secondNumLowerBound":1, "secondNumUpperBound":10]
     static var secondNum = 0
     
+    //Calculates answer for generated question, takes in the game mode type as a parameter
     func calculateAnswer(generatedType:Int)->Int{
         switch generatedType {
-        case 4:
+        case gameManager.gameModes["Addition"]:
             return MathGame.firstNum + MathGame.secondNum
-        case 3:
+        case gameManager.gameModes["Subtraction"]:
             return MathGame.firstNum - MathGame.secondNum
-        case 2:
+        case gameManager.gameModes["Multiplication"]:
             return MathGame.firstNum * MathGame.secondNum
-        case 1:
+        case gameManager.gameModes["Division"]:
             return MathGame.firstNum * MathGame.secondNum / MathGame.secondNum
         default:
             return 0
         }
     }
     
+    //Sets the game type
     static func setGameType(userChoice:Int){
         gameType = userChoice
     }
     
+    //Gets the game type
     static func getGameType()->Int{
         return gameType
     }
     
+    //Takes in the randomly generated numbers and creates the string that is displayed in the question label
     func generateProblemString(generatedType: Int)->String{
         switch generatedType {
-        case 4:
+        case gameManager.gameModes["Addition"]:
             return "\(MathGame.firstNum) + \(MathGame.secondNum) = ?"
-        case 3:
+        case gameManager.gameModes["Subtraction"]:
             return "\(MathGame.firstNum) - \(MathGame.secondNum) = ?"
-        case 2:
+        case gameManager.gameModes["Multiplication"]:
             return "\(MathGame.firstNum) x \(MathGame.secondNum) = ?"
-        case 1:
+        case gameManager.gameModes["Division"]:
             return "\(MathGame.firstNum * MathGame.secondNum) ÷ \(MathGame.secondNum) = ?"
         default:
             return "Error Occured"
         }
     }
     
+    //Randomly generates two numbers. If it is the random game mode (gameType = 0) then a random game mode is chosen and passed to calculateAnswer and generateProblemString
     func generateProblem()->String{
-        MathGame.firstNum = Int.random(in: 10...20)
-        MathGame.secondNum = Int.random(in: 1...10)
         
-        if MathGame.gameType == 0 {
-            let randomType = Int.random(in: 1...4)
+        MathGame.firstNum = Int.random(in: MathGame.randomLimits["firstNumLowerBound"]!...MathGame.randomLimits["firstNumUpperBound"]!)
+        MathGame.secondNum = Int.random(in: MathGame.randomLimits["secondNumLowerBound"]!...MathGame.randomLimits["secondNumUpperBound"]!)
+        
+        if MathGame.gameType == gameManager.gameModes["Random"] {
+            let randomType = Int.random(in: gameManager.gameModes["Addition"]!...gameManager.gameModes["Division"]!)
             MathGame.answer = calculateAnswer(generatedType: randomType)
             return generateProblemString(generatedType: randomType )
         }
@@ -70,13 +78,9 @@ class MathGame{
         }
     }
     
+    //Checks if the players answer is correct
     func checkAnswer(userInput: Int)->Bool{
-        if userInput == MathGame.answer{
-            return true
-        }
-        else{
-            return false
-        }
+        return userInput == MathGame.answer ? true : false
     }
     
 }
