@@ -11,7 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //Number of rows in high schore table, one for each mode
-    var tableViewRows = 5
+    private var tableViewRows = 5
     @IBOutlet weak var timeSliderObject: UISlider!
     @IBOutlet weak var timeDisplayLabel: UILabel!
     

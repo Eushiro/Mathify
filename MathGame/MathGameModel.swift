@@ -11,15 +11,15 @@ import Foundation
 class MathGame{
     
     static var gameType = 0
-    static var input = 0
-    static var answer = 0
-    static var firstNum = 0
+    private static var input = 0
+    private static var answer = 0
+    private static var firstNum = 0
     //Use random limits to control difficulty of randomly generated problems
-    static var randomLimits = ["firstNumLowerBound":10, "firstNumUpperBound": 20, "secondNumLowerBound":1, "secondNumUpperBound":10]
-    static var secondNum = 0
+    private static var randomLimits = ["firstNumLowerBound":10, "firstNumUpperBound": 20, "secondNumLowerBound":1, "secondNumUpperBound":10]
+    private static var secondNum = 0
     
     //Calculates answer for generated question, takes in the game mode type as a parameter
-    func calculateAnswer(generatedType:Int)->Int{
+    private func calculateAnswer(generatedType:Int)->Int{
         switch generatedType {
         case gameManager.gameModes["Addition"]:
             return MathGame.firstNum + MathGame.secondNum
@@ -45,7 +45,7 @@ class MathGame{
     }
     
     //Takes in the randomly generated numbers and creates the string that is displayed in the question label
-    func generateProblemString(generatedType: Int)->String{
+    private func generateProblemString(generatedType: Int)->String{
         switch generatedType {
         case gameManager.gameModes["Addition"]:
             return "\(MathGame.firstNum) + \(MathGame.secondNum) = ?"

@@ -16,12 +16,12 @@ class GameViewController: UIViewController {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet var inputButtons: [UIButton]!
-    var timer = Timer()
+    private var timer = Timer()
     
     @IBOutlet weak var backButton: UIButton!
     
     //Time left in gameplay, along with game over
-    var timeOfGame = gameManager.seconds{
+    private var timeOfGame = gameManager.seconds{
         didSet{
             timerLabel.text = "Time: \(timeOfGame)"
             if timeOfGame == 0{
@@ -36,18 +36,18 @@ class GameViewController: UIViewController {
     }
     
     //Values that change label texts
-    var countCorrect = 0 {
+    private var countCorrect = 0 {
         didSet{
             scoreLabel.text = "Score: \(countCorrect)"
         }
     }
-    var userInput = "" {
+    private var userInput = "" {
         didSet{
             userInputLabel.text = "\(userInput)"
         }
     }
     
-    var problemString = ""{
+    private var problemString = ""{
         didSet{
             problemLabel.text = "\(problemString)"
         }
