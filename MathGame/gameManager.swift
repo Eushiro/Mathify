@@ -17,7 +17,7 @@ class gameManager{
     static var scores = [0,0,0,0,0]
     
     //Dictionary of game modes and corresponding high scores array index
-    static var gameModes = ["Addition":0, "Subtraction":1, "Multiplication":2, "Division":3, "Random":4]
+    private(set) static var gameModes = ["Addition":0, "Subtraction":1, "Multiplication":2, "Division":3, "Random":4]
     
     //Game length
     static var seconds = 30

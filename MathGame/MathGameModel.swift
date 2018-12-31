@@ -10,7 +10,7 @@ import Foundation
 
 class MathGame{
     
-    static var gameType = 0
+    private static var gameType = 0
     private static var input = 0
     private static var answer = 0
     private static var firstNum = 0
@@ -36,6 +36,7 @@ class MathGame{
     
     //Sets the game type
     static func setGameType(userChoice:Int){
+        assert(userChoice>=0 && userChoice<=4, "MathGameModel.setGameType(\(userChoice)), invalid game type, must be 0...4")
         gameType = userChoice
     }
     

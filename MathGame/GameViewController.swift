@@ -11,14 +11,14 @@ import UIKit
 class GameViewController: UIViewController {
 
     //View Objects
-    @IBOutlet weak var problemLabel: UILabel!
-    @IBOutlet weak var userInputLabel: UILabel!
-    @IBOutlet weak var scoreLabel: UILabel!
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet var inputButtons: [UIButton]!
+    @IBOutlet private weak var problemLabel: UILabel!
+    @IBOutlet private weak var userInputLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet private weak var timerLabel: UILabel!
+    @IBOutlet private var inputButtons: [UIButton]!
     private var timer = Timer()
     
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet private weak var backButton: UIButton!
     
     //Time left in gameplay, along with game over
     private var timeOfGame = gameManager.seconds{
@@ -67,7 +67,7 @@ class GameViewController: UIViewController {
     }
  
     //If your score is greater than previous scores, updates it when you go back to menu
-    @IBAction func backButtonClick(_ sender: UIButton?) {
+    @IBAction private func backButtonClick(_ sender: UIButton?) {
         if(countCorrect>gameManager.scores[MathGame.getGameType()]){
             gameManager.scores[MathGame.getGameType()] = countCorrect
             }
@@ -75,7 +75,7 @@ class GameViewController: UIViewController {
     
     //Captures user input based on button click, 10 is clear input, 11 is enter
     //0-9 are text inputs which get converted to integers when enter is pressed
-    @IBAction func inputButtonClicked(_ sender: UIButton) {
+    @IBAction private func inputButtonClicked(_ sender: UIButton) {
 
         let buttonIndex = inputButtons.firstIndex(of: sender)!
         if buttonIndex == 10{

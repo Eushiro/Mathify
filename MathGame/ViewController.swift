@@ -14,10 +14,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBOutlet var menuButtons: [UIButton]!
+    @IBOutlet private var menuButtons: [UIButton]!
     
     //Sets the game type based on button click
-    @IBAction func menuButtonClick(_ sender: UIButton) {
+    @IBAction private func menuButtonClick(_ sender: UIButton) {
         //Minus one since settings button is 0, and addition is 1 in menuButtons array, want addition to be gameMode 0 like in gameManager dictionary
         let buttonNumber = menuButtons.firstIndex(of: sender)! - 1
         MathGame.setGameType(userChoice: buttonNumber)
