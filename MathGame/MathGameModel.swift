@@ -36,7 +36,7 @@ class MathGame{
     
     //Sets the game type
     static func setGameType(userChoice:Int){
-        assert(userChoice>=0 && userChoice<=4, "MathGameModel.setGameType(\(userChoice)), invalid game type, must be 0...4")
+        assert(userChoice >= -1 && userChoice<=4, "MathGameModel.setGameType(\(userChoice)), invalid game type, must be 0...4")
         gameType = userChoice
     }
     
